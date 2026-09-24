@@ -1,0 +1,23 @@
+\documentclass[
+    a4paper,
+    12pt,
+    oneside,
+    headings=normal,
+    listof=totoc,
+    bibliography=totoc,
+    captions=tableheading,
+    numbers=noenddot,
+    parskip=half
+]{scrreprt}
+
+\input{config/metadata}
+\input{config/preamble}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\input{sections/cover}
+
+\cleardoublepage
+
+\end{document}

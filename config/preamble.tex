@@ -1,0 +1,185 @@
+% ---------------------------------------------------------------------------
+% Packages
+% ---------------------------------------------------------------------------
+% This template targets pdfLaTeX because it is widely available on Overleaf,
+% TeX Live, and MiKTeX.
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman]{babel}
+\usepackage{amsmath}
+\usepackage{newtxtext,newtxmath}
+\usepackage{csquotes}
+\usepackage{etoolbox}
+\usepackage[
+  backend=biber,
+  style=alphabetic
+]{biblatex}
+\addbibresource{references.bib}
+
+\usepackage[a4paper,left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm,headheight=18pt]{geometry}
+\usepackage{setspace}
+\usepackage{microtype}
+
+\usepackage{xcolor}
+\definecolor{hsrmviolet}{HTML}{341D48}
+\definecolor{hsrmmagenta}{HTML}{A71F5F}
+\definecolor{hsrmpurple}{HTML}{5C40E0}
+\definecolor{hsrmtext}{HTML}{202020}
+\definecolor{hsrmmuted}{HTML}{6F6A75}
+\definecolor{hsrmrule}{HTML}{D6D1DD}
+\definecolor{hsrmlink}{HTML}{341D48}
+
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{siunitx}
+
+\usepackage{upquote}
+\usepackage{listings}
+\usepackage{caption}
+\usepackage[nohyperlinks]{acronym}
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\usepackage[
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=hsrmlink,
+  pdfusetitle
+]{hyperref}
+% Allow long URLs and identifiers to wrap before they reach the page margin.
+\usepackage{xurl}
+\usepackage{bookmark}
+\usepackage[ngerman,nameinlink,noabbrev]{cleveref}
+
+% ---------------------------------------------------------------------------
+% PDF metadata
+% ---------------------------------------------------------------------------
+\hypersetup{
+  pdftitle={\praktikumsberichttitle},
+  pdfauthor={\praktikumsberichtauthor},
+  pdfsubject={\documenttype},
+  pdfkeywords={\pdfkeywords}
+}
+
+% ---------------------------------------------------------------------------
+% Layout
+% ---------------------------------------------------------------------------
+\setstretch{1.2}
+
+% Keep the table of contents readable: chapter, section, and subsection are
+% usually enough for a thesis outline.
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{2}
+
+\sisetup{
+  locale=DE,
+  per-mode=symbol
+}
+
+\captionsetup{
+  font=small,
+  labelfont={bf,color=hsrmviolet}
+}
+
+\setlist{
+  itemsep=0.2ex,
+  parsep=0pt,
+  topsep=0.8ex
+}
+
+\clearpairofpagestyles
+\automark[section]{chapter}
+\ihead{\headmark}
+\ohead{\pagemark}
+\ofoot[\pagemark]{}
+\pagestyle{scrheadings}
+
+\setkomafont{disposition}{\normalfont\bfseries\color{hsrmtext}}
+\setkomafont{pageheadfoot}{\small\normalfont\color{hsrmmuted}}
+\setkomafont{pagenumber}{\small\normalfont\color{hsrmmuted}}
+\setkomafont{headsepline}{\color{hsrmrule}}
+\setkomafont{chapter}{\huge}
+\setkomafont{section}{\Large}
+\setkomafont{subsection}{\large}
+
+\RedeclareSectionCommand[
+  beforeskip=0pt,
+  afterskip=2.4em
+]{chapter}
+\RedeclareSectionCommand[
+  beforeskip=2.8ex plus 0.6ex minus 0.2ex,
+  afterskip=1.1ex plus 0.2ex
+]{section}
+\RedeclareSectionCommand[
+  beforeskip=2.2ex plus 0.5ex minus 0.2ex,
+  afterskip=0.8ex plus 0.2ex
+]{subsection}
+
+\DeclareTOCStyleEntry[
+  beforeskip=1.65ex plus 0.3ex
+]{tocline}{chapter}
+\DeclareTOCStyleEntries[
+  beforeskip=0.18ex plus 0.08ex
+]{tocline}{section,subsection}
+
+\crefname{chapter}{Kapitel}{Kapitel}
+\Crefname{chapter}{Kapitel}{Kapitel}
+\crefname{section}{Abschnitt}{Abschnitte}
+\Crefname{section}{Abschnitt}{Abschnitte}
+\crefname{figure}{Abbildung}{Abbildungen}
+\Crefname{figure}{Abbildung}{Abbildungen}
+\crefname{table}{Tabelle}{Tabellen}
+\Crefname{table}{Tabelle}{Tabellen}
+\crefname{equation}{Gleichung}{Gleichungen}
+\Crefname{equation}{Gleichung}{Gleichungen}
+\crefname{lstlisting}{Listing}{Listings}
+\Crefname{lstlisting}{Listing}{Listings}
+
+% ---------------------------------------------------------------------------
+% Source-code listings
+% ---------------------------------------------------------------------------
+% Use language=Python, Java, C++, SQL, HTML, XML, etc. as needed.
+% Long listings are usually better placed in the appendix.
+\definecolor{listingbackground}{HTML}{F8F6FC}
+\definecolor{listingrule}{HTML}{5C40E0}
+\definecolor{listingnumber}{HTML}{8A8494}
+\definecolor{listingkeyword}{HTML}{5C40E0}
+\definecolor{listingcomment}{HTML}{6F6A75}
+\definecolor{listingstring}{HTML}{A71F5F}
+
+\lstdefinestyle{praktikumsberichtlisting}{
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{listingbackground},
+  keywordstyle=\bfseries\color{listingkeyword},
+  commentstyle=\itshape\color{listingcomment},
+  stringstyle=\color{listingstring},
+  numbers=left,
+  numberstyle=\scriptsize\color{listingnumber},
+  stepnumber=1,
+  numbersep=14pt,
+  frame=leftline,
+  rulecolor=\color{listingrule},
+  framesep=8pt,
+  framerule=2pt,
+  xleftmargin=1.6em,
+  breaklines=true,
+  breakatwhitespace=false,
+  columns=fullflexible,
+  keepspaces=true,
+  tabsize=2,
+  captionpos=b,
+  showstringspaces=false,
+  upquote=true,
+  literate=%
+    {ä}{{\"a}}1
+    {ö}{{\"o}}1
+    {ü}{{\"u}}1
+    {Ä}{{\"A}}1
+    {Ö}{{\"O}}1
+    {Ü}{{\"U}}1
+    {ß}{{\ss}}1
+}
+\lstset{style=praktikumsberichtlisting}
+\renewcommand{\lstlistlistingname}{Quellcodeverzeichnis}

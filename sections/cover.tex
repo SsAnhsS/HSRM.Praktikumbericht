@@ -1,0 +1,33 @@
+\begin{titlepage}
+  \centering
+
+  % University and programme information comes from config/metadata.tex.
+  \includegraphics[height=2.2cm,keepaspectratio]{images/logo.png}
+
+  \vspace{1.2cm}
+  {\large \faculty\par}
+  {\large \degreeprogram\par}
+
+  \vfill
+
+  {\large \documenttype\par}
+  \vspace{0.8cm}
+  {\huge\bfseries \praktikumsberichttitle\par}
+
+  \ifdefempty{\praktikumsberichtsubtitle}{}{
+    \vspace{0.4cm}
+    {\Large \praktikumsberichtsubtitle\par}
+  }
+
+  \vfill
+
+  \begin{tabular}{@{}l@{\hspace{1.5em}}l@{}}
+    Autor/in: & \praktikumsberichtauthor \\
+    Matrikelnummer: & \studentnumber \\
+    Erstbetreuung: & \firstsupervisor \\
+    Zweitbetreuung: & \secondsupervisor \\
+    Abgabedatum: & \submissiondate \\
+  \end{tabular}
+
+  \vfill
+\end{titlepage}
