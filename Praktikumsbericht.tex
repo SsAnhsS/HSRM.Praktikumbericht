@@ -16,8 +16,33 @@
 \begin{document}
 
 \pagenumbering{gobble}
-\input{sections/cover}
+\input{sections/00_cover}
 
 \cleardoublepage
+\pagenumbering{Roman}
+
+\cleardoublepage
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents
+
+% Image listings block
+\cleardoublepage
+\listoffigures
+
+% Source-code listings block
+\cleardoublepage
+\lstlistoflistings
+
+% Acronyms
+\cleardoublepage
+\input{sections/acronyms}
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+\chapter{Einleitung}
+\label{chap:introduction}
+\input{sections/01_introduction.tex}
+
 
 \end{document}
