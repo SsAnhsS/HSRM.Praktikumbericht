@@ -1,22 +1,43 @@
 \section{Woche 1}
 
-\subsection{ATB-Störmeldung: Neue Formulare in der App (Ticket \#161)}
+\subsection{ATB-Störmeldung: Neue Formulare in der mobilen Anwendung (Ticket \#161)}
 
     \subsubsection{Aufgabenstellung}
-    In der mobilen Anwendung sollten neue Formulare für die Meldung von Störungen an der \ac{ATB} implementiert werden.
-    Nur Unternehmen, die für die Verwendung dieses ATB-Formulars registriert sind, können es in der App verwenden.
-    Die Datenmodelle für ATB im Disturbances-Microservice sind bereits implementiert, 
-    sodass die Formulare in der App nur noch an die entsprechenden Stellen eingebunden werden müssen.
+    In der mobilen Anwendung sollten neue Formulare für die Meldung von Störungen an der \ac{ATB}
+    implementiert werden. Die Formulare sollten nur für Unternehmen verfügbar sein, die für die
+    Nutzung von ATB-Störmeldungen freigeschaltet sind. Zusätzlich sollten Benutzer ihre eigenen
+    Meldungen in einer Liste einsehen können.
+    Die Datenmodelle für ATB-Störmeldungen waren im Disturbances-Microservice bereits vorhanden,
+    sodass die Formulare nur noch in der App umgesetzt und an den entsprechenden Stellen
+    eingebunden werden mussten.
 
     \subsubsection{Lösung}
-    Zunächst habe ich mich in den bestehenden Code eingearbeitet und die breits vorhandenen Datenmodelle für ATB-Störmeldungen im Disturbances-Microservice analysiert.
+    Zunächst arbeitete ich mich in den bestehenden Code ein und analysierte die bereits vorhandenen
+    Datenmodelle für ATB-Störmeldungen im Disturbances-Microservice.
 
-    Die Formulare wurde mit xamarin Forms implementiert, um eine plattformübergreifende Lösung für die mobile Anwendung zu gewährleisten. 
-    Dabei wurden die Eingabefelder und Validierungen gemäß den Anforderungen des ATB-Formulars gestaltet.
-    Die Formulare wurden in der mobilen Anwendung implementiert und an die entsprechenden Stellen eingebunden.
-    
+    Anschließend setzte ich die Formulare mit .NET MAUI in XAML und C\# um.
+    Dadurch stehen sie sowohl unter Android als auch unter iOS zur Verfügung.
+    Die Eingabefelder und Validierungen wurden gemäß den Anforderungen an ATB-Störmeldungen gestaltet.
+    Zum Beispiele wurden die vollständige \ac{UIC}-Nummer des Wagens, die Datum- und Uhrzeitangaben, 
+    die Ort sowie die Zugnummer als Pflichtfelder definiert.
+    Die eingegebenen Daten werden über die REST-API an den Disturbances-Microservice übermittelt.
+    % TODO: kurz beschreiben, wie die Freischaltung pro Unternehmen geprüft wird
+    % Dong nghiep da xu ly phan naz, bao gom user create va set up cho tenant, moi cong ty la mot tenant, no co tenant id rieng biet va duy nhat, khi nguoi dung login thi controller lay tenant id cua current user de xu ly.
+    Nach dem Absenden kann der Benutzer seine eigenen Meldungen in einer Liste einsehen.
+
+    Abschließend aktualisierte ich die Lokalisierungsdateien für Deutsch, Englisch und Niederländisch.
+    Bei der Übersetzung der fachspezifischen Eisenbahnterminologie nutzte ich KI-Werkzeuge
+    als Unterstützung. Die Übersetzung wurde von meinem Betreuer überprüft und angepasst, um die fachliche Korrektheit sicherzustellen.
+
+    % TODO: Need screenshot of mobile app for ATB form and list view
+
 \subsection{ATB-Störmeldung: Bearbeitung und Übersicht im Web-Portal (Ticket \#185)}
 
     \subsubsection{Aufgabenstellung}
-    ...
+    Die Übersichtsseite In der Webanwendung sollte die Übersichtsseite eine Liste aller ATB-Störmeldungen anzeigen, 
+    die von allen Benutzern in einen gleichen Unternehmen eingereicht wurden.
+    Es gibt die Filereingabefield, um die Meldungen nach eingegebene Daten sortieren zu können. Die Filterung sollten speichert werden und in nächste Sitzung wieder angezeigt werden.
+    Jede ATB-Störmeldung hat die Möglichkeit zum Bearbeiten und Löschen. Aber nur die Benutzer, die die Rolle "Administrator" oder "Tenant Owner" haben, können die Meldungen bearbeiten und löschen.
 
+    \subsubsection{Lösung}
+    Im ersten Schritt erstellte ich die Übersichtsseite für ATB-Störmeldungen in der Webanwendung mit Blazor.
