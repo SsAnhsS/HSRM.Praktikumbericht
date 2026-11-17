@@ -21,8 +21,14 @@
     Zum Beispiele wurden die vollständige \ac{UIC}-Nummer des Wagens, die Datum- und Uhrzeitangaben, 
     die Ort sowie die Zugnummer als Pflichtfelder definiert.
     Die eingegebenen Daten werden über die REST-API an den Disturbances-Microservice übermittelt.
-    % TODO: kurz beschreiben, wie die Freischaltung pro Unternehmen geprüft wird
-    % Dong nghiep da xu ly phan naz, bao gom user create va set up cho tenant, moi cong ty la mot tenant, no co tenant id rieng biet va duy nhat, khi nguoi dung login thi controller lay tenant id cua current user de xu ly.
+    Nach dem Absenden kann der Benutzer seine eigenen Meldungen in einer Liste einsehen.
+    Die Daten rief ich dazu über die REST-API des Disturbances-Microservice ab. Da dieser
+    bereits ein Filtermodell bereitstellt, war keine eigene Filterlogik in der App notwendig:
+    Beim Abruf wird lediglich die ID des angemeldeten Benutzers als Filterkriterium übergeben,
+    sodass der Microservice nur die Meldungen dieses Benutzers zurückliefert.
+
+    % TODO: Example code snippet for REST API call to Disturbances-Microservice
+    
     Nach dem Absenden kann der Benutzer seine eigenen Meldungen in einer Liste einsehen.
 
     Abschließend aktualisierte ich die Lokalisierungsdateien für Deutsch, Englisch und Niederländisch.
